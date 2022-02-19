@@ -68,6 +68,28 @@ class TwoDimensionalRectangularCoordinates(Coordinates):
             self._x * math.sin(theta) + self._y * math.cos(theta)
         )
 
+def calc_inner_point(point_a, point_b, m, n):
+    """内分点を求める.
+
+    異なる2点A, Bを結ぶ線分を、Aの方からm:n(m>0, n>0)に内分する点を求める.
+    A           P     B
+    *-----------*-----*
+          m        n
+
+    Args:
+        point_a (TwoDimensionalRectangularCoordinates): 点A
+        point_b (TwoDimensionalRectangularCoordinates): 点B
+        m (float): 点A側の比
+        n (float): 点B側の比
+
+    Returns:
+        TwoDimensionalRectangularCoordinates: 内分点
+    """
+    return TwoDimensionalRectangularCoordinates(
+        (m * point_b.x + n * point_a.x) / (m + n),
+        (m * point_b.y + n * point_a.y) / (m + n)
+    )
+
 class Circle:
     """円"""
 
