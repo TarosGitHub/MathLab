@@ -68,6 +68,22 @@ class TwoDimensionalRectangularCoordinates(Coordinates):
             self._x * math.sin(theta) + self._y * math.cos(theta)
         )
 
+class Circle:
+    """円"""
+
+    def __init__(self, center, radius):
+        """円コンストラクタ.
+
+        Args:
+            center (TwoDimensionalRectangularCoordinates): 中心
+            radius (float): 半径
+        """
+        self._center = center
+        self._radius = radius
+
+    def __str__(self):
+        return "{},{}".format(str(self._center), self._radius)
+
 class ThreeDimensionalRectangularCoordinates(Coordinates):
     """3次元直交座標"""
 
