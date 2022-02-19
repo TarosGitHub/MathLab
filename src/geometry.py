@@ -1,4 +1,5 @@
 from abc import ABC
+import math
 
 class CoordinateSystem(ABC):
     """座標系"""
@@ -50,6 +51,22 @@ class TwoDimensionalRectangularCoordinates(Coordinates):
     def translate(self, x, y):
         """平行移動する"""
         return TwoDimensionalRectangularCoordinates(self._x + x, self._y + y)
+
+    def rotate(self, theta):
+        """原点まわりに回転する.
+
+        x軸からy軸に向かう方向が正の向き.
+
+        Args:
+            theta (float): 回転角度[Radian]
+
+        Returns:
+            TwoDimensionalRectangularCoordinates: 回転後の座標
+        """
+        return TwoDimensionalRectangularCoordinates(
+            self._x * math.cos(theta) - self._y * math.sin(theta),
+            self._x * math.sin(theta) + self._y * math.cos(theta)
+        )
 
 class ThreeDimensionalRectangularCoordinates(Coordinates):
     """3次元直交座標"""
