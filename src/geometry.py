@@ -47,6 +47,10 @@ class TwoDimensionalRectangularCoordinates(Coordinates):
     def y(self, value):
         self._y = value
 
+    def translate(self, x, y):
+        """平行移動する"""
+        return TwoDimensionalRectangularCoordinates(self._x + x, self._y + y)
+
 class ThreeDimensionalRectangularCoordinates(Coordinates):
     """3次元直交座標"""
 
