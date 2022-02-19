@@ -90,6 +90,29 @@ def calc_inner_point(point_a, point_b, m, n):
         (m * point_b.y + n * point_a.y) / (m + n)
     )
 
+def calc_outer_point(point_a, point_b, m, n):
+    """外分点を求める.
+
+    異なる2点A, Bを結ぶ線分を、Aの方からm:n(m>0, n>0, m!=n)に外分する点を求める.
+    A           B     P
+    *-----------*-----*
+                <- n ->
+    <------- m ------->
+
+    Args:
+        point_a (TwoDimensionalRectangularCoordinates): 点A
+        point_b (TwoDimensionalRectangularCoordinates): 点B
+        m (float): 点A側の比(m != n)
+        n (float): 点B側の比(m != n)
+
+    Returns:
+        TwoDimensionalRectangularCoordinates: 外分点
+    """
+    return TwoDimensionalRectangularCoordinates(
+        (m * point_b.x - n * point_a.x) / (m - n),
+        (m * point_b.y - n * point_a.y) / (m - n)
+    )
+
 class Circle:
     """円"""
 
